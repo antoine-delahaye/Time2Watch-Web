@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+/*Background colors*/
+body {
+  background-color: #1b1b1b;
+}
+
+header {
+  background-color: #121212;
+}
+
+/*Titles styles*/
+h2 {
+  color: #e6af2e;
+}
+
+/*Buttons style*/
+.btn {
+  color: #e6af2e;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+  color: #e6af2e;
+  background-color: #1b1b1b;
+  outline: none !important;
+  box-shadow: none;
+}

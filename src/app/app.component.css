@@ -1,0 +1,13 @@
+header a:hover {
+  background-color: #1b1b1b;
+}
+
+header img {
+  max-width: 5rem !important;
+}
+
+header button {
+  width: 12rem;
+  height: 3rem;
+  font-size: 1.25rem;
+}

@@ -17,9 +17,12 @@ h2 {
   color: #e6af2e;
 }
 
-.btn:hover, .btn:focus, .btn:active {
+.btn:hover {
   color: #e6af2e;
   background-color: #1b1b1b;
+}
+
+.btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none;
 }

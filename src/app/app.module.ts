@@ -5,11 +5,17 @@ import {AppComponent} from './app.component';
 import {MoviesComponent} from './movies/movies.component';
 import {RouterModule} from '@angular/router';
 import {allAppRoutes} from './routes';
+import { HomeComponent } from './home/home.component';
+import { TvshowsComponent } from './tvshows/tvshows.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesComponent
+    MoviesComponent,
+    HomeComponent,
+    TvshowsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -2,5 +2,7 @@
   "AppName": "Time2Watch",
   "Movies": "Films",
   "TvShows": "Séries TV",
-  "About": "À propos"
+  "About": "À propos",
+  "TrendingMovies": "Films en tendance",
+  "TrendingTvShows": "Séries TV en tendance"
 }

@@ -3,11 +3,16 @@ body {
   background-color: #1b1b1b;
 }
 
-header {
+header, footer {
   background-color: #121212;
 }
 
-/*Titles styles*/
+/*Header and footer size*/
+header, footer {
+  height: 6rem;
+}
+
+/*Titles style*/
 h2 {
   color: #e6af2e;
 }
@@ -25,4 +30,18 @@ h2 {
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none;
+}
+
+/*Text style*/
+a {
+  text-decoration: none;
+  color: #a9a9a9;
+}
+
+a:hover {
+  color: #e6af2e;
+}
+
+p {
+  color: #a9a9a9;
 }

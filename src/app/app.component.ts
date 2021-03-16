@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 import {TranslateService} from '@ngx-translate/core';
 
@@ -9,14 +9,14 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class AppComponent {
-  title = 'Time2Watch';
 
   constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'fr']);
+    translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
   }
 
-  switchLang(lang: string): void {
-    this.translate.use(lang);
-  }
+  title = 'Time2Watch';
+
+  @HostBinding('class') class = 'd-flex flex-column min-vh-100';
+
 }

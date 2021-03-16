@@ -11,3 +11,33 @@ header button {
   height: 3rem;
   font-size: 1.25rem;
 }
+
+footer p {
+  font-size: 1.2rem;
+  color: #e6af2e;
+}
+
+footer button {
+  width: 12rem;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+footer ul {
+  background-color: #1b1b1b;
+  width: 15rem;
+}
+
+footer .dropdown-item {
+  color: #a9a9a9;
+}
+
+footer li:hover {
+  background-color: #121212;
+  color: #e6af2e;
+}
+
+footer li.active {
+  background-color: #e6af2e;
+  color: #121212;
+}

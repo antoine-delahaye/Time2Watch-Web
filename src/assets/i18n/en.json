@@ -2,5 +2,11 @@
   "AppName": "Time2Watch",
   "Movies": "Movies",
   "TvShows": "TV shows",
-  "About": "About"
+  "About": "About",
+  "TrendingMovies": "Trending movies",
+  "TrendingTvShows": "Trending tv shows",
+  "Language": "Language",
+  "English": "English",
+  "French": "French",
+  "University": "University of Orléans"
 }

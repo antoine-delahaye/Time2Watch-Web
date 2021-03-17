@@ -22,13 +22,13 @@ export class Movie {
     public overview: string,
     public popularity: number,
     public poster_path: string,
-    public productionCompanies: {
+    public production_companies: {
       id: number;
       logo_path: string;
       name: string;
       origin_country: string;
     }[],
-    public productionCountries: {
+    public production_countries: {
       iso_3166_1: string;
       name: string;
     }[],

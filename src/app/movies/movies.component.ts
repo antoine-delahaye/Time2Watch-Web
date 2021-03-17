@@ -13,13 +13,15 @@ import {Observable} from 'rxjs';
 
 export class MoviesComponent implements OnInit {
   movies: Movie[];
+  movie: Movie;
 
   constructor(private service: Service, private translateService: TranslateService) { }
 
   @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
-    this.getPopularMovies();
+    // this.getPopularMovies();
+    // this.getMovie(584);
   }
 
   getPopularMovies(): any {
@@ -31,6 +33,20 @@ export class MoviesComponent implements OnInit {
           for (const movie of data.results) {
             this.movies.push(plainToClass(Movie, movie));
           }
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  getMovie(id: number): any {
+    this.service
+      .getListOfGroup(`https://api.themoviedb.org/3/movie/${id}?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
+      .subscribe(
+        data => {
+          this.movie = plainToClass(Movie, data);
+          console.log(this.movie);
         },
         err => {
           console.log(err);

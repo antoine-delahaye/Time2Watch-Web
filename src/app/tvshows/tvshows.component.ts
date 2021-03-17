@@ -11,7 +11,7 @@ export class TvshowsComponent implements OnInit {
   constructor() {
   }
 
-  @HostBinding('class.col-12') boolean = true;
+  @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
   }

@@ -13,6 +13,7 @@ import {AboutComponent} from './about/about.component';
 
 import {RouterModule} from '@angular/router';
 import {allAppRoutes} from './routes';
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {allAppRoutes} from './routes';
     MoviesComponent,
     HomeComponent,
     TvshowsComponent,
-    AboutComponent
+    AboutComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

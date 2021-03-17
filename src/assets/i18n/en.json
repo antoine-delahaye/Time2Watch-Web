@@ -8,5 +8,10 @@
   "Language": "Language",
   "English": "English",
   "French": "French",
-  "University": "University of Orléans"
+  "University": "University of Orléans",
+  "Poster": "Poster",
+  "Title": "Title",
+  "ReleaseDate": "Release date",
+  "AverageNote": "Average note",
+  "Overview": "Overview"
 }

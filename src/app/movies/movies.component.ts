@@ -19,6 +19,10 @@ export class MoviesComponent implements OnInit {
   @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
+    this.getPopularMovies();
+  }
+
+  getPopularMovies(): any {
     this.movies = [];
     this.service
       .getListOfGroup(`https://api.themoviedb.org/3/movie/popular?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}&page=1`)

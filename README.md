@@ -32,7 +32,7 @@ Si vous souhaitez construire le projet, faite `ng build`. Les artefacts de const
 
 ## Annexes
 
-- [Dépôt GitLab](https://gitlab.com/Thomas-Jacquet/agenda-ludique)
+- [Dépôt GitLab](https://gitlab.com/antoine-delahaye/Time2Watch-Web)
 
 <div style="text-align: center">
     <img src="https://i.imgur.com/PUTSirh.png" alt="IUT Informatique d'Orléans" height="100">

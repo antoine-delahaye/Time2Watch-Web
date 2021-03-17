@@ -10,5 +10,5 @@ export const allAppRoutes: Routes = [
   {path: 'movies', component: MoviesComponent},
   {path: 'tvshows', component: TvshowsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'movie', component: MovieComponent}
+  {path: 'movie/:id', component: MovieComponent}
 ];

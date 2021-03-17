@@ -16,7 +16,7 @@ export class MoviesComponent implements OnInit {
 
   constructor(private service: Service, private translateService: TranslateService) { }
 
-  @HostBinding('class.col-12') boolean = true;
+  @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
     this.movies = [];

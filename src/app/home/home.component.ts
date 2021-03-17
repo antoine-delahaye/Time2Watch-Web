@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor() {
   }
 
-  @HostBinding('class') class = 'col-12';
+  @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
   }

@@ -1,45 +1,47 @@
-class Movie {
-  adult: boolean;
-  backdropPath: string;
-  belongsToCollection: {
+export class Movie {
+  constructor(
+  public adult: boolean,
+  public backdropPath: string,
+  public belongsToCollection: {
     id: number;
     name: string;
     posterPath: string;
     backdropPath: string;
-  }[];
-  budget: number;
-  genres: {
+  }[],
+  public budget: number,
+  public genres: {
     id: number;
     name: string;
-  }[];
-  homepage: string;
-  id: number;
-  imdbId: string;
-  originalLanguage: string;
-  originalTitle: string;
-  overview: string;
-  popularity: number;
-  pasterPath: string;
-  productionCompagnies: {
+  }[],
+  public homepage: string,
+  public id: number,
+  public imdbId: string,
+  public originalLanguage: string,
+  public originalTitle: string,
+  public overview: string,
+  public popularity: number,
+  public posterPath: string,
+  public productionCompanies: {
     id: number;
     logoPath: string;
     originCountry: string;
-  }[];
-  productionCountries: {
+  }[],
+  public productionCountries: {
     iso_3166_1: string;
     name: string;
-  }[];
-  releaseDate: string;  // Date format
-  revenue: number;
-  runtime: number;
-  spokenLanguages: {
+  }[],
+  public releaseDate: string,
+  public revenue: number,
+  public runtime: number,
+  public spokenLanguages: {
     iso_639_1: string;
     name: string;
-  }[];
-  status: string;
-  tagline: string;
-  title: string;
-  video: boolean;
-  voteAverage: number;
-  voteCount: number;
+  }[],
+  public status: string,
+  public tagline: string,
+  public title: string,
+  public video: boolean,
+  public voteAverage: number,
+  public voteCount: number
+  ) { }
 }

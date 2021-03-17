@@ -1,4 +1,8 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
+import {Service} from '../service';
+import {plainToClass} from 'class-transformer';
+import {Movie} from './movie';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movies',
@@ -8,12 +12,28 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 
 export class MoviesComponent implements OnInit {
 
-  constructor() {
+  movies: Movie[];
+
+  constructor(private service: Service, private translateService: TranslateService) {
   }
 
-  @HostBinding('class.col-12') boolean = true;
+  @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
+    this.movies = [];
+    this.service
+      .getListOfGroup(`https://api.themoviedb.org/3/movie/popular?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}&page=1`)
+      .subscribe(
+        data => {
+          for (const movie of data.results) {
+            this.movies.push(plainToClass(Movie, movie));
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
 }
+

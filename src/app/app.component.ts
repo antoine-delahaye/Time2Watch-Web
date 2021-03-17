@@ -13,6 +13,7 @@ export class AppComponent {
   constructor(public translate: TranslateService) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
+    translate.currentLang = 'fr';
   }
 
   title = 'Time2Watch';

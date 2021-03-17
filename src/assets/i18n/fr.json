@@ -8,5 +8,10 @@
   "Language": "Langue",
   "English": "Anglais",
   "French": "Français",
-  "University": "Université d'Orléans"
+  "University": "Université d'Orléans",
+  "Poster": "Affiche",
+  "Title": "Titre",
+  "ReleaseDate": "Date de sortie",
+  "AverageNote": "Note moyenne",
+  "Overview": "Résumé"
 }

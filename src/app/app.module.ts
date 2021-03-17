@@ -14,6 +14,7 @@ import {AboutComponent} from './about/about.component';
 import {RouterModule} from '@angular/router';
 import {allAppRoutes} from './routes';
 import { MovieComponent } from './movie/movie.component';
+import { TvshowComponent } from './tvshow/tvshow.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MovieComponent } from './movie/movie.component';
     HomeComponent,
     TvshowsComponent,
     AboutComponent,
-    MovieComponent
+    MovieComponent,
+    TvshowComponent
   ],
   imports: [
     BrowserModule,

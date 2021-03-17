@@ -1,9 +1,8 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {Service} from '../service';
-import {deserializeArray, plainToClass} from 'class-transformer';
+import {plainToClass} from 'class-transformer';
 import {Movie} from './movie';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -12,9 +11,11 @@ import {Observable} from 'rxjs';
 })
 
 export class MoviesComponent implements OnInit {
+
   movies: Movie[];
 
-  constructor(private service: Service, private translateService: TranslateService) { }
+  constructor(private service: Service, private translateService: TranslateService) {
+  }
 
   @HostBinding('class') class = 'my-auto col-12';
 
@@ -33,5 +34,6 @@ export class MoviesComponent implements OnInit {
         }
       );
   }
+
 }
 

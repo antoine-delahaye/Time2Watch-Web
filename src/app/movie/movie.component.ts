@@ -1,12 +1,12 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  selector: 'app-movie',
+  templateUrl: './movie.component.html',
+  styleUrls: ['./movie.component.css']
 })
 
-export class MoviesComponent implements OnInit {
+export class MovieComponent implements OnInit {
 
   constructor() {
   }

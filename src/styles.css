@@ -1,3 +1,5 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 /*Background colors*/
 body {
   background-color: #1b1b1b;
@@ -8,8 +10,12 @@ header, footer {
 }
 
 /*Titles style*/
-h2 {
+h2, h3 {
   color: #e6af2e;
+}
+
+h4 {
+  color: #a9a9a9;
 }
 
 /*Buttons style*/

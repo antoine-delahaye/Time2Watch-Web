@@ -7,11 +7,6 @@ header, footer {
   background-color: #121212;
 }
 
-/*Header and footer size*/
-header, footer {
-  height: 6rem;
-}
-
 /*Titles style*/
 h2 {
   color: #e6af2e;
@@ -19,12 +14,12 @@ h2 {
 
 /*Buttons style*/
 .btn {
-  color: #e6af2e;
+  color: #e6af2e !important;
 }
 
 .btn:hover {
-  color: #e6af2e;
-  background-color: #1b1b1b;
+  color: #e6af2e !important;
+  background-color: #1b1b1b !important;
 }
 
 .btn:focus, .btn:active {
@@ -45,3 +40,9 @@ a:hover {
 p {
   color: #a9a9a9;
 }
+
+/*Header toogle button*/
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(230, 175, 46, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+

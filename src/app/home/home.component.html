@@ -1,11 +1,11 @@
 <main class="container-fluid d-flex flex-column justify-content-center align-items-left p-5">
-  <section>
-    <h2>{{ "TrendingMovies" | translate }}</h2>
-    <div class="d-flex flex-row justify-content-between col-11 mx-auto">
-      <div class="d-flex flex-column" *ngFor="let movie of movies">
-        <img class="img-fluid" alt="Poster"
+  <section class="mb-5">
+    <h2 class="mb-3">{{ "TrendingMovies" | translate }}</h2>
+    <div class="d-flex flex-row justify-content-between flex-wrap mx-auto col-12">
+      <div class="d-flex flex-column col-xl-1 col-lg-2 col-md-3 col-sm-4 m-2" *ngFor="let movie of movies">
+        <img class="img-fluid rounded" alt="Poster"
              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ movie.poster_path }}">
-        <p>{{ movie.title }}</p>
+        <p class="ms-2 text-truncate">{{ movie.title }}</p>
       </div>
     </div>
   </section>

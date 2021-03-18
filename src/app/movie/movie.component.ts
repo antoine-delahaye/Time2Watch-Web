@@ -15,15 +15,17 @@ import {Movie} from './movie';
 export class MovieComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
+
   movie: Movie;
 
-  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) { }
+  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
+  }
 
   @HostBinding('class') class = 'my-auto col-12';
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params.id);
+      this.getMovie(params.id);
     });
   }
 
@@ -43,4 +45,11 @@ export class MovieComponent implements OnInit, OnDestroy {
         }
       );
   }
+
+  minutesConverter(totalMinutes: number): string {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = Math.floor(totalMinutes - (hours * 60));
+    return hours + 'h' + minutes + 'min';
+  }
+
 }

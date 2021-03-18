@@ -1,5 +1,5 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
-import {Movie} from '../movies/movie';
+import {Movies} from '../movies/movies';
 import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {plainToClass} from 'class-transformer';
@@ -12,7 +12,7 @@ import {plainToClass} from 'class-transformer';
 
 export class HomeComponent implements OnInit {
 
-  movies: Movie[];
+  movies: Movies[];
 
   constructor(private service: Service, private translateService: TranslateService) {
   }
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         data => {
           for (const movie of data.results.slice(0, 10)) {
-            this.movies.push(plainToClass(Movie, movie));
+            this.movies.push(plainToClass(Movies, movie));
           }
         },
         err => {

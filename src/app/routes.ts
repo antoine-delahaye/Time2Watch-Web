@@ -9,7 +9,7 @@ import {AboutComponent} from './about/about.component';
 export const allAppRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'movies', component: MoviesComponent},
-  {path: 'movie.ts/:id', component: MovieComponent},
+  {path: 'movie/:id', component: MovieComponent},
   {path: 'tvshows', component: TvshowsComponent},
   {path: 'tvshow/:id', component: TvshowComponent},
   {path: 'about', component: AboutComponent}

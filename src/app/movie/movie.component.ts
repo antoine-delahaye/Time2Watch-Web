@@ -16,6 +16,7 @@ import {Cast, Crew} from '../api/credits';
 export class MovieComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
+
   movie: Movie;
   castArray: Cast[];
   crewArray: Crew[];
@@ -27,7 +28,7 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params.id);
+      this.getMovie(params.id);
     });
   }
 
@@ -71,4 +72,11 @@ export class MovieComponent implements OnInit, OnDestroy {
         }
       );
   }
+  
+  minutesConverter(totalMinutes: number): string {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = Math.floor(totalMinutes - (hours * 60));
+    return hours + 'h' + minutes + 'min';
+  }
+
 }

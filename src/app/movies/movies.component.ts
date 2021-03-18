@@ -13,7 +13,8 @@ import {TranslateService} from '@ngx-translate/core';
 export class MoviesComponent implements OnInit {
   movies: Movies[];
 
-  constructor(private service: Service, private translateService: TranslateService) { }
+  constructor(private service: Service, private translateService: TranslateService) {
+  }
 
   @HostBinding('class') class = 'my-auto col-12';
 
@@ -36,5 +37,6 @@ export class MoviesComponent implements OnInit {
         }
       );
   }
+
 }
 

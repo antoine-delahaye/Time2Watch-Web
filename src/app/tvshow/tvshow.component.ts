@@ -1,6 +1,10 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {plainToClass} from 'class-transformer';
+import {Service} from '../service';
+import {TranslateService} from '@ngx-translate/core';
+import {TVShow} from './tvshow';
 
 @Component({
   selector: 'app-tvshow',
@@ -11,8 +15,9 @@ import {Subscription} from 'rxjs';
 export class TvshowComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
+  tvshow: TVShow;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
   }
 
   @HostBinding('class') class = 'my-auto col-12';
@@ -27,4 +32,16 @@ export class TvshowComponent implements OnInit, OnDestroy {
     this.routeSub.unsubscribe();
   }
 
+  getTVShow(id: number): any {
+    this.service
+      .getListOfGroup(`https://api.themoviedb.org/3/tv/${id}?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
+      .subscribe(
+        data => {
+          this.tvshow = plainToClass(TVShow, data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
 }

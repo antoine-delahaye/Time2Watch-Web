@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
           console.log(err);
         }
       );
-    console.log(this.movies);
   }
 
 }

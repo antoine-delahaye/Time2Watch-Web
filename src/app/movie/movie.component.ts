@@ -6,6 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {Movie} from './movie';
 import {Cast, Crew} from '../api/credits';
+import {DisplayTime} from '../app.component';
 
 @Component({
   selector: 'app-movie',
@@ -15,16 +16,20 @@ import {Cast, Crew} from '../api/credits';
 
 export class MovieComponent implements OnInit, OnDestroy {
 
+  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
+  }
+
   private routeSub: Subscription;
 
   movie: Movie;
   castArray: Cast[];
   crewArray: Crew[];
 
-  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
-  }
-
   @HostBinding('class') class = 'my-auto col-12';
+
+  displayTime(minutes: number): any {
+    DisplayTime(minutes);
+  }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -71,12 +76,6 @@ export class MovieComponent implements OnInit, OnDestroy {
           console.log(err);
         }
       );
-  }
-  
-  minutesConverter(totalMinutes: number): string {
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = Math.floor(totalMinutes - (hours * 60));
-    return hours + 'h' + minutes + 'min';
   }
 
 }

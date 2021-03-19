@@ -6,6 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {TVShow} from './tvshow';
 import {Cast, Crew} from '../api/credits';
+import {DisplayTime} from '../app.component';
 
 @Component({
   selector: 'app-tvshow',
@@ -15,19 +16,25 @@ import {Cast, Crew} from '../api/credits';
 
 export class TvshowComponent implements OnInit, OnDestroy {
 
+  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
+  }
+
   private routeSub: Subscription;
+
   tvshow: TVShow;
   castArray: Cast[];
   crewArray: Crew[];
 
-  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
-  }
-
   @HostBinding('class') class = 'my-auto col-12';
+
+  displayTime(minutes: number): any {
+    DisplayTime(minutes);
+  }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params.id);
+      this.getTVShow(params.id);
+      this.getCreditsTVShow(params.id);
     });
   }
 
@@ -53,22 +60,19 @@ export class TvshowComponent implements OnInit, OnDestroy {
       .getListOfGroup(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
       .subscribe(
         data => {
-
           this.castArray = [];
           this.crewArray = [];
-
           for (const castObj of data['cast']) {
             this.castArray.push(plainToClass(Cast, castObj));
           }
-
           for (const crewObj of data['crew']) {
             this.crewArray.push(plainToClass(Crew, crewObj));
           }
-
         },
         err => {
           console.log(err);
         }
       );
   }
+
 }

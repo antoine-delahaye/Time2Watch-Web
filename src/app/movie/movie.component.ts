@@ -5,6 +5,7 @@ import {plainToClass} from 'class-transformer';
 import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {Movie} from './movie';
+import {Cast, Crew} from '../api/credits';
 
 @Component({
   selector: 'app-movie',
@@ -17,6 +18,8 @@ export class MovieComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   movie: Movie;
+  castArray: Cast[];
+  crewArray: Crew[];
 
   constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
   }
@@ -46,6 +49,30 @@ export class MovieComponent implements OnInit, OnDestroy {
       );
   }
 
+  getCreditsMovie(id: number): any {
+    this.service
+      .getListOfGroup(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
+      .subscribe(
+        data => {
+
+          this.castArray = [];
+          this.crewArray = [];
+
+          for (const castObj of data['cast']) {
+            this.castArray.push(plainToClass(Cast, castObj));
+          }
+
+          for (const crewObj of data['crew']) {
+            this.crewArray.push(plainToClass(Crew, crewObj));
+          }
+
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+  
   minutesConverter(totalMinutes: number): string {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = Math.floor(totalMinutes - (hours * 60));

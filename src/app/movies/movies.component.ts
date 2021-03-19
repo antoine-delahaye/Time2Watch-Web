@@ -11,6 +11,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class MoviesComponent implements OnInit {
+
   movies: Movies[];
 
   constructor(private service: Service, private translateService: TranslateService) {

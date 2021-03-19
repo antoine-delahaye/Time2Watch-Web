@@ -27,8 +27,8 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   @HostBinding('class') class = 'my-auto col-12';
 
-  displayTime(minutes: number): any {
-    DisplayTime(minutes);
+  displayTime(minutes: number): string {
+    return DisplayTime(minutes);
   }
 
   ngOnInit(): void {

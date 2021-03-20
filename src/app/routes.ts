@@ -10,7 +10,7 @@ export const allAppRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'movies', component: MoviesComponent},
   {path: 'movie/:id', component: MovieComponent},
-  {path: 'tvshows', component: TvshowsComponent},
+  {path: 'tvshows/:page', component: TvshowsComponent},
   {path: 'tvshow/:id', component: TvshowComponent},
   {path: 'about', component: AboutComponent}
 ];

@@ -1,8 +1,8 @@
 <main class="container-fluid d-flex flex-column justify-content-center align-items-left p-3">
-  <section class="mb-5">
-    <h2 class="mb-3">{{ "TrendingMovies" | translate }}</h2>
-    <div class="d-flex flex-row justify-content-between flex-wrap mx-auto col-12">
-      <div class="d-flex flex-column col-xl-1 col-lg-2 col-md-3 col-sm-4 m-2 px-2 pt-2 pb-1 rounded"
+  <section>
+    <h2 class="mx-3">{{ "TrendingMovies" | translate }}</h2>
+    <div class="d-flex flex-row justify-content-between flex-wrap mx-auto col-10">
+      <div class="d-flex flex-column col-xl-2 col-lg-3 col-md-4 col-sm-6 m-2 px-2 pt-2 pb-1 rounded"
            *ngFor="let movie of movies" routerLink="/movie/{{ movie.id }}">
         <img class="img-fluid rounded" alt="Poster"
              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ movie.poster_path }}">
@@ -10,4 +10,13 @@
       </div>
     </div>
   </section>
+  <div class="d-flex flex-row justify-content-center align-items-center" *ngIf="this.page == 1; else page_not_1">
+    <button class="btn m-3" routerLink="/movies/{{ +this.page + 1 }}">{{ "Next" | translate }}</button>
+  </div>
+  <ng-template #page_not_1>
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <button class="btn m-3" routerLink="/movies/{{ +this.page - 1 }}">{{ "Previous" | translate }}</button>
+      <button class="btn m-3" routerLink="/movies/{{ +this.page + 1 }}">{{ "Next" | translate }}</button>
+    </div>
+  </ng-template>
 </main>

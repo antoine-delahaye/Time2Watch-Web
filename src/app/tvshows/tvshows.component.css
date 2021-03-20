@@ -1,3 +1,12 @@
 main section div div:hover {
   background-color: #121212;
 }
+
+main button {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+main button:hover {
+  background-color: #121212 !important;
+}

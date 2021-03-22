@@ -10,5 +10,8 @@
   "French": "Français",
   "University": "Université d'Orléans",
   "Previous": "Précédent",
-  "Next": "Suivant"
+  "Next": "Suivant",
+  "AboutText": "Cette application a été créée par Florian Savouré et Antoine Delahaye en lien avec l'IUT Informatique d'Orléans.",
+  "DownloadText": "Si vous le voulez, vous pouvez télécharger et installer la version mobile de Time2Watch sur votre téléphone !",
+  "DownloadApp": "Télécharger pour Android"
 }

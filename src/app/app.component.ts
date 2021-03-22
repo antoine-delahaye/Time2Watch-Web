@@ -22,12 +22,15 @@ export class AppComponent {
 
 }
 
-export function DisplayTime(totalMinutes: number): string {
-  if (totalMinutes < 60) {
-    return totalMinutes + 'min';
+export function DisplayTime(minutes: number): string {
+  if (minutes < 60) {
+    return minutes + 'min';
   }
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = Math.floor(totalMinutes - (hours * 60));
-  return hours + 'h' + minutes + 'min';
+  const hours = Math.floor(minutes / 60);
+  return hours + 'h' + Math.floor(minutes - (hours * 60)) + 'min';
+}
 
+export function DisplayDate(date: string): string {
+  const datePart = date.match(/\d+/g);
+  return datePart[2] + '/' + datePart[1] + '/' + datePart[0];
 }

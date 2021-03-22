@@ -16,6 +16,7 @@ h2, h3 {
 
 h4 {
   color: #a9a9a9;
+  font-size: 1.2rem;
 }
 
 /*Buttons style*/
@@ -47,8 +48,20 @@ p {
   color: #a9a9a9;
 }
 
+.date {
+  font-size: 0.9rem;
+}
+
 /*Header toogle button*/
 .navbar-dark .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(230, 175, 46, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+/*Cards style*/
+main section div div:hover {
+  background-color: #121212;
+}
+
+main section div div:hover .title {
+  color: #e6af2e !important;
+}

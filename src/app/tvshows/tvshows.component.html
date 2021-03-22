@@ -6,7 +6,8 @@
            *ngFor="let tvshow of tvshows" routerLink="/tvshow/{{ tvshow.id }}">
         <img class="img-fluid rounded" alt="Poster"
              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ tvshow.poster_path }}">
-        <p class="mb-0 text-truncate">{{ tvshow.name }}</p>
+        <p class="mb-0 text-truncate title">{{ tvshow.name }}</p>
+        <p class="mb-0 date">{{ tvshow.first_air_date.substring(0, 4) }}</p>
       </div>
     </div>
   </section>

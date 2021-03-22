@@ -6,7 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {TVShow} from './tvshow';
 import {Cast, Crew} from '../api/credits';
-import {DisplayTime} from '../app.component';
+import {DisplayTime, DisplayDate} from '../app.component';
 
 @Component({
   selector: 'app-tvshow',
@@ -29,6 +29,10 @@ export class TvshowComponent implements OnInit, OnDestroy {
 
   displayTime(minutes: number): string {
     return DisplayTime(minutes);
+  }
+
+  displayDate(date: string): string {
+    return DisplayDate(date);
   }
 
   ngOnInit(): void {

@@ -5,7 +5,7 @@
       <div class="d-flex flex-column col-xl-2 col-lg-3 col-md-4 col-sm-6 m-2 px-2 pt-2 pb-1 rounded"
            *ngFor="let movie of movies" routerLink="/movie/{{ movie.id }}">
         <img class="img-fluid rounded" alt="Poster"
-             src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ movie.poster_path }}">
+             src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}">
         <p class="mb-0 text-truncate title">{{ movie.title }}</p>
         <p class="mb-0 date">{{ movie.release_date.substring(0, 4) }}</p>
       </div>

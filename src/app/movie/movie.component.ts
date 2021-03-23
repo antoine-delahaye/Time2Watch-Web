@@ -6,7 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {Movie} from './movie';
 import {Cast, Crew} from '../api/credits';
-import {DisplayTime} from '../app.component';
+import {DisplayDate, DisplayTime} from '../app.component';
 
 @Component({
   selector: 'app-movie',
@@ -31,9 +31,14 @@ export class MovieComponent implements OnInit, OnDestroy {
     return DisplayTime(minutes);
   }
 
+  displayDate(date: string): string {
+    return DisplayDate(date);
+  }
+
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.getMovie(params.id);
+      this.getCreditsMovie(params.id);
     });
   }
 
@@ -59,18 +64,14 @@ export class MovieComponent implements OnInit, OnDestroy {
       .getListOfGroup(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
       .subscribe(
         data => {
-
           this.castArray = [];
           this.crewArray = [];
-
           for (const castObj of data['cast']) {
             this.castArray.push(plainToClass(Cast, castObj));
           }
-
           for (const crewObj of data['crew']) {
             this.crewArray.push(plainToClass(Crew, crewObj));
           }
-
         },
         err => {
           console.log(err);

@@ -6,6 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {TVShow} from './tvshow';
 import {Cast, Crew} from '../api/credits';
+import {Rating} from '../api/rating';
 
 @Component({
   selector: 'app-tvshow',
@@ -29,6 +30,7 @@ export class TvshowComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       console.log(params.id);
+      
     });
   }
 

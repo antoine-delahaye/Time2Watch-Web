@@ -37,21 +37,4 @@ export class Rating {
       }
     );
   }
-
-  public getRatedTVShows(): any {
-    this.service.getListOfGroup(
-      'https://api.themoviedb.org/3/guest_session/78f6d5bb6c2fca5f2278c9ba79783328/rated/tv?api_key=ccbc42c4b357545c785bb0d1caba6301&language=fr&sort_by=created_at.asc'
-    ).subscribe(
-      data => {
-        const ratedTVShows = [];
-        for (const tvshows of data.results) {
-          ratedTVShows.push(plainToClass(TVShow, tvshows));
-        }
-        return ratedTVShows;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
 }

@@ -24,10 +24,10 @@
       {{ "Language" | translate }}
     </button>
     <ul class="dropdown-menu">
-      <li class="dropdown-item active" (click)="translate.use('fr')" [class.active]="'fr' === translate.currentLang">
+      <li class="dropdown-item active" (click)="changeLanguage('fr')" [class.active]="'fr' === translate.currentLang">
         <i class="flag-icon flag-icon-fr"></i> {{ "French" | translate }}
       </li>
-      <li class="dropdown-item" (click)="translate.use('en')" [class.active]="'en' === translate.currentLang">
+      <li class="dropdown-item" (click)="changeLanguage('en')" [class.active]="'en' === translate.currentLang">
         <i class="flag-icon flag-icon-gb"></i> {{ "English" | translate }}
       </li>
     </ul>

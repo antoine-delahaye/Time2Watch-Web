@@ -15,7 +15,11 @@ export class AppComponent implements OnInit {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
     translate.currentLang = 'fr';
-    cookies.set('lang', translate.currentLang);
+    if (cookies.check('lang')) {
+      translate.use(cookies.get('lang'));
+    } else {
+      cookies.set('lang', translate.currentLang);
+    }
   }
 
   title = 'Time2Watch';
@@ -24,7 +28,8 @@ export class AppComponent implements OnInit {
 
   changeLanguage(lang: string): void {
     this.translate.use(lang);
-    this.cookies.set('lang', this.translate.currentLang);
+    this.cookies.set('lang', lang);
+    console.log(this.cookies.get('lang'));
   }
 
   ngOnInit(): void {

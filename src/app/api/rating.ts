@@ -1,16 +1,15 @@
 import {Service} from '../service';
-import {Movie} from '../movie/movie';
 import {plainToClass} from 'class-transformer';
+import {Injectable} from '@angular/core';
 import {TVShow} from '../tvshow/tvshow';
 
+
+@Injectable({
+  providedIn: 'root',
+})
 export class Rating {
 
-  public ratedMovie: Movie[];
-  public ratedTVShows: TVShow[];
-
   constructor(private service: Service) {
-    this.ratedMovie = [];
-    this.ratedTVShows = [];
   }
 
   public rate(id: number, rating: number, typeOfContent: string): any {
@@ -26,7 +25,6 @@ export class Rating {
         console.log(err);
       }
     );
-    this.refreshRating(typeOfContent);
   }
 
   public deleteRating(id: number, typeOfContent: string): any {
@@ -40,29 +38,16 @@ export class Rating {
     );
   }
 
-  public refreshRating(typeOfContent: string): any {
-    if (typeOfContent === 'movie') {
-      typeOfContent = 'movies';
-    }
-
+  public getRatedTVShows(): any {
     this.service.getListOfGroup(
-      `https://api.themoviedb.org/3/guest_session/78f6d5bb6c2fca5f2278c9ba79783328/rated/${typeOfContent}?api_key=ccbc42c4b357545c785bb0d1caba6301&language=fr&sort_by=created_at.asc`
+      'https://api.themoviedb.org/3/guest_session/78f6d5bb6c2fca5f2278c9ba79783328/rated/tv?api_key=ccbc42c4b357545c785bb0d1caba6301&language=fr&sort_by=created_at.asc'
     ).subscribe(
       data => {
-
-        console.log(data);
-        if (typeOfContent === 'movie') {
-          this.ratedMovie = [];
-          for (const movie of data.results) {
-            this.ratedMovie.push(plainToClass(Movie, movie));
-          }
-        } else {
-          this.ratedTVShows = [];
-          for (const tvshow of data.results) {
-            this.ratedTVShows.push(plainToClass(TVShow, tvshow));
-          }
+        const ratedTVShows = [];
+        for (const tvshows of data.results) {
+          ratedTVShows.push(plainToClass(TVShow, tvshows));
         }
-
+        return ratedTVShows;
       },
       err => {
         console.log(err);

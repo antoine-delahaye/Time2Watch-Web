@@ -2,7 +2,6 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 
 import {TranslateService} from '@ngx-translate/core';
 import {CookieService} from 'ngx-cookie-service';
-import {Rating} from './api/rating';
 import {Service} from './service';
 
 @Component({
@@ -10,7 +9,6 @@ import {Service} from './service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent implements OnInit {
 
   constructor(public translate: TranslateService, public cookies: CookieService, private service: Service) {
@@ -31,11 +29,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.translate.use(this.cookies.get('lang'));
-    const r = new Rating(this.service);
-    r.refreshRating('movies');
-    r.refreshRating('tv');
   }
-
 }
 
 export function DisplayTime(minutes: number): string {

@@ -8,6 +8,7 @@ import {Movie} from './movie';
 import {Cast, Crew} from '../api/credits';
 import {DisplayDate, DisplayTime} from '../app.component';
 import {Rating} from '../api/rating';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-movie',
@@ -17,7 +18,11 @@ import {Rating} from '../api/rating';
 
 export class MovieComponent implements OnInit, OnDestroy {
 
-  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
+  constructor(private route: ActivatedRoute,
+              private service: Service,
+              private translateService: TranslateService,
+              private r: Rating
+  ) {
   }
 
   private routeSub: Subscription;
@@ -25,7 +30,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   movie: Movie;
   castArray: Cast[];
   crewArray: Crew[];
-  currentRate = 0;
+  currentRate = this.getRating();
   movieID = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
@@ -40,10 +45,9 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
+      this.movieID = +params.id;
       this.getMovie(params.id);
-      // TODO vérifier si le film est déjà noté et appliquer la valeur
       this.getCreditsMovie(params.id);
-      this.movieID = params.id;
     });
   }
 
@@ -52,7 +56,27 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
 
   onRatingChange(rating: number): any {
-    new Rating(this.service).rate(this.movieID, rating * 2, 'movie');
+    this.r.rate(this.movieID, rating * 2, 'movie');
+  }
+
+  getRating(): any {
+    this.service.getListOfGroup(
+      'https://api.themoviedb.org/3/guest_session/78f6d5bb6c2fca5f2278c9ba79783328/rated/movies?api_key=ccbc42c4b357545c785bb0d1caba6301&language=fr&sort_by=created_at.asc'
+    ).subscribe(
+      data => {
+        console.log(data);
+        for (const movie of data.results) {
+          if (movie.id === this.movieID) {
+            this.currentRate = movie.rating / 2;
+            return;
+          }
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    return this.currentRate;
   }
 
   getMovie(id: number): any {

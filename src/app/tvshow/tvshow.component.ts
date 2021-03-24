@@ -51,7 +51,7 @@ export class TvshowComponent implements OnInit, OnDestroy {
   }
 
   onRatingChange(rating: number): any {
-    new Rating(this.service).rate(this.tvshowID, rating * 2, 'tv');
+    // new Rating(this.service).rate(this.tvshowID, rating * 2, 'tv');
   }
 
   getTVShow(id: number): any {

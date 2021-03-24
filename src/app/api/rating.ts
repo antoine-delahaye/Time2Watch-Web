@@ -19,7 +19,8 @@ export class Rating {
       `https://api.themoviedb.org/3/${typeOfContent}/${id}/rating?api_key=ccbc42c4b357545c785bb0d1caba6301&guest_session_id=78f6d5bb6c2fca5f2278c9ba79783328`,
       `{\"value\":${rating}}`
     ).subscribe(
-      () => {
+      data => {
+        console.log(data);
       },
       err => {
         console.log(err);
@@ -40,11 +41,16 @@ export class Rating {
   }
 
   public refreshRating(typeOfContent: string): any {
+    if (typeOfContent === 'movie') {
+      typeOfContent = 'movies';
+    }
+
     this.service.getListOfGroup(
       `https://api.themoviedb.org/3/guest_session/78f6d5bb6c2fca5f2278c9ba79783328/rated/${typeOfContent}?api_key=ccbc42c4b357545c785bb0d1caba6301&language=fr&sort_by=created_at.asc`
     ).subscribe(
       data => {
 
+        console.log(data);
         if (typeOfContent === 'movie') {
           this.ratedMovie = [];
           for (const movie of data.results) {

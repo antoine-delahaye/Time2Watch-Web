@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Movie} from './movie';
 import {Cast, Crew} from '../api/credits';
 import {DisplayDate, DisplayTime} from '../app.component';
+import {Rating} from '../api/rating';
 
 @Component({
   selector: 'app-movie',
@@ -25,6 +26,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   castArray: Cast[];
   crewArray: Crew[];
   currentRate = 0;
+  movieID = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
 
@@ -41,11 +43,16 @@ export class MovieComponent implements OnInit, OnDestroy {
       this.getMovie(params.id);
       // TODO vérifier si le film est déjà noté et appliquer la valeur
       this.getCreditsMovie(params.id);
+      this.movieID = params.id;
     });
   }
 
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
+  }
+
+  onRatingChange(rating: number): any {
+    new Rating(this.service).rate(this.movieID, rating * 2, 'movie');
   }
 
   getMovie(id: number): any {

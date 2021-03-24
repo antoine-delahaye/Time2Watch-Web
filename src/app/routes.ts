@@ -8,9 +8,9 @@ import {AboutComponent} from './about/about.component';
 
 export const allAppRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'movies', component: MoviesComponent},
+  {path: 'movies/:page', component: MoviesComponent},
   {path: 'movie/:id', component: MovieComponent},
-  {path: 'tvshows', component: TvshowsComponent},
+  {path: 'tvshows/:page', component: TvshowsComponent},
   {path: 'tvshow/:id', component: TvshowComponent},
   {path: 'about', component: AboutComponent}
 ];

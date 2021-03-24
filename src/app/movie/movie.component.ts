@@ -6,6 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {Movie} from './movie';
 import {Cast, Crew} from '../api/credits';
+import {DisplayDate, DisplayTime} from '../app.component';
 
 @Component({
   selector: 'app-movie',
@@ -15,22 +16,31 @@ import {Cast, Crew} from '../api/credits';
 
 export class MovieComponent implements OnInit, OnDestroy {
 
+  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
+  }
+
   private routeSub: Subscription;
 
   movie: Movie;
   castArray: Cast[];
   crewArray: Crew[];
-  note = 0;
-
-  constructor(private route: ActivatedRoute, private service: Service, private translateService: TranslateService) {
-  }
+  currentRate = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
+
+  displayTime(minutes: number): string {
+    return DisplayTime(minutes);
+  }
+
+  displayDate(date: string): string {
+    return DisplayDate(date);
+  }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.getMovie(params.id);
       // TODO vérifier si le film est déjà noté et appliquer la valeur
+      this.getCreditsMovie(params.id);
     });
   }
 
@@ -57,18 +67,14 @@ export class MovieComponent implements OnInit, OnDestroy {
       .getListOfGroup(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=ccbc42c4b357545c785bb0d1caba6301&language=${this.translateService.currentLang}`)
       .subscribe(
         data => {
-
           this.castArray = [];
           this.crewArray = [];
-
           for (const castObj of data['cast']) {
             this.castArray.push(plainToClass(Cast, castObj));
           }
-
           for (const crewObj of data['crew']) {
             this.crewArray.push(plainToClass(Crew, crewObj));
           }
-
         },
         err => {
           console.log(err);
@@ -81,5 +87,4 @@ export class MovieComponent implements OnInit, OnDestroy {
     const minutes = Math.floor(totalMinutes - (hours * 60));
     return hours + 'h' + minutes + 'min';
   }
-
 }

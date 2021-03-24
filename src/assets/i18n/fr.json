@@ -9,9 +9,14 @@
   "English": "Anglais",
   "French": "Français",
   "University": "Université d'Orléans",
-  "Poster": "Affiche",
-  "Title": "Titre",
-  "ReleaseDate": "Date de sortie",
-  "AverageNote": "Note moyenne",
-  "Overview": "Résumé"
+  "Previous": "Précédent",
+  "Next": "Suivant",
+  "AboutText": "Cette application a été créée par Florian Savouré et Antoine Delahaye en lien avec l'IUT Informatique d'Orléans.",
+  "DownloadText": "Si vous le voulez, vous pouvez télécharger et installer la version mobile de Time2Watch sur votre téléphone !",
+  "DownloadApp": "Télécharger pour Android",
+  "SeasonsNumber": "Nombre de saisons",
+  "EpisodesNumber": "Nombre total d'épisodes",
+  "Seasons": "saisons",
+  "Episodes": "épisodes",
+  "Rating": "Votre note"
 }

@@ -30,7 +30,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.getMovie(params.id);
-      this.rateMovie(params.id, 8.5);
+      // TODO vérifier si le film est déjà noté et appliquer la valeur
     });
   }
 
@@ -74,37 +74,6 @@ export class MovieComponent implements OnInit, OnDestroy {
           console.log(err);
         }
       );
-  }
-
-  rateMovie(id: number, rating: number): any {
-    this.service.postJSON(
-      `https://api.themoviedb.org/3/movie/${id}/rating?api_key=ccbc42c4b357545c785bb0d1caba6301&guest_session_id=78f6d5bb6c2fca5f2278c9ba79783328`,
-      `{\"value\":${rating}}`
-    ).subscribe(
-      data => {
-
-        // Si le status_code est 12 alors il était déjà noté et la note à été update
-        // Si c'est 1 alors l'utilisateur l'avait jamais noté et la note à été créer
-
-        this.note = rating;
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  public deleteRating(id: number): any {
-    this.service.deleteJSON(`https://api.themoviedb.org/3/movie/${id}/rating?api_key=ccbc42c4b357545c785bb0d1caba6301&guest_session_id=78f6d5bb6c2fca5f2278c9ba79783328`
-    ).subscribe(
-      data => {
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    );
   }
 
   minutesConverter(totalMinutes: number): string {

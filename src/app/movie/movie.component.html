@@ -9,8 +9,8 @@
       <p class="mb-0"><i class="bi bi-star"></i> {{ movie.vote_average }}/10</p>
     </div>
     <div class="d-flex flex-row mb-2">
-      <p class="col-3 text-uppercase fw-bold pt-2">{{ "Rating" | translate }}</p>
-      <ngb-rating [(rate)]="currentRate" [max]="5">
+      <p class="col-4 text-uppercase fw-bold pt-2">{{ "Rating" | translate }}</p>
+      <ngb-rating [(rate)]="currentRate" [max]="5" (rateChange)="onRatingChange($event)">
         <ng-template let-fill="fill" let-index="index">
           <span class="star" [class.filled]="fill === 100">&#9733;</span>
         </ng-template>

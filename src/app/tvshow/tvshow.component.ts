@@ -6,6 +6,7 @@ import {Service} from '../service';
 import {TranslateService} from '@ngx-translate/core';
 import {TVShow} from './tvshow';
 import {Cast, Crew} from '../api/credits';
+import {Rating} from '../api/rating';
 import {DisplayTime, DisplayDate} from '../app.component';
 
 @Component({
@@ -25,6 +26,7 @@ export class TvshowComponent implements OnInit, OnDestroy {
   castArray: Cast[];
   crewArray: Crew[];
   currentRate = 0;
+  tvshowID = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
 
@@ -40,11 +42,16 @@ export class TvshowComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.params.subscribe(params => {
       this.getTVShow(params.id);
       this.getCreditsTVShow(params.id);
+      this.tvshowID = params.id;
     });
   }
 
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
+  }
+
+  onRatingChange(rating: number): any {
+    new Rating(this.service).rate(this.tvshowID, rating * 2, 'tv');
   }
 
   getTVShow(id: number): any {

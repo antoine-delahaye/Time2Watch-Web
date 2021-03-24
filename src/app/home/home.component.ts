@@ -14,7 +14,6 @@ import {plainToClass} from 'class-transformer';
 export class HomeComponent implements OnInit {
 
   movies: Movies[];
-
   tvshows: TVShows[];
 
   constructor(private service: Service, private translateService: TranslateService) {

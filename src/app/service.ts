@@ -7,6 +7,10 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: 'c31z'})
 };
 
+const httpOptionsPost = {
+  headers: new HttpHeaders({'Content-Type': 'application/json;charset=utf-8'})
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -34,6 +38,20 @@ export class Service {
 
   public getListOfGroup(url: string): Observable<any> {
     return this.httpClient.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  public postJSON(url: string, body: string): Observable<any> {
+    return this.httpClient.post(url, body, httpOptionsPost).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  public deleteJSON(url: string): Observable<any> {
+    return this.httpClient.delete(url, httpOptionsPost).pipe(
       map(this.extractData),
       catchError(this.handleError)
     );

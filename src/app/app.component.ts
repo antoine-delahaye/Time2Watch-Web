@@ -1,6 +1,7 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 import {TranslateService} from '@ngx-translate/core';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +9,27 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService, public cookies: CookieService) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
     translate.currentLang = 'fr';
+    cookies.set('lang', translate.currentLang);
   }
 
   title = 'Time2Watch';
 
   @HostBinding('class') class = 'd-flex flex-column min-vh-100';
+
+  changeLanguage(lang: string): void {
+    this.translate.use(lang);
+    this.cookies.set('lang', this.translate.currentLang);
+  }
+
+  ngOnInit(): void {
+    this.translate.use(this.cookies.get('lang'));
+  }
 
 }
 

@@ -15,6 +15,7 @@ import {RouterModule} from '@angular/router';
 import {allAppRoutes} from './routes';
 import { MovieComponent } from './movie/movie.component';
 import { TvshowComponent } from './tvshow/tvshow.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TvshowComponent } from './tvshow/tvshow.component';
       }
     }),
     BrowserModule,
-    RouterModule.forRoot(allAppRoutes)
+    RouterModule.forRoot(allAppRoutes),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

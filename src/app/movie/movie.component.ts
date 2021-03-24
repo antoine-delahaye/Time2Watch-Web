@@ -24,6 +24,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   movie: Movie;
   castArray: Cast[];
   crewArray: Crew[];
+  currentRate = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
 

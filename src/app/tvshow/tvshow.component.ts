@@ -24,6 +24,7 @@ export class TvshowComponent implements OnInit, OnDestroy {
   tvshow: TVShow;
   castArray: Cast[];
   crewArray: Crew[];
+  currentRate = 0;
 
   @HostBinding('class') class = 'my-auto col-12';
 

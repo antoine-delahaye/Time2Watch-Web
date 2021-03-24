@@ -95,6 +95,18 @@ export class MovieComponent implements OnInit, OnDestroy {
     );
   }
 
+  public deleteRating(id: number): any {
+    this.service.deleteJSON(`https://api.themoviedb.org/3/movie/${id}/rating?api_key=ccbc42c4b357545c785bb0d1caba6301&guest_session_id=78f6d5bb6c2fca5f2278c9ba79783328`
+    ).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
   minutesConverter(totalMinutes: number): string {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = Math.floor(totalMinutes - (hours * 60));

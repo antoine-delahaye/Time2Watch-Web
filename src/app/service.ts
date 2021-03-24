@@ -49,5 +49,12 @@ export class Service {
       catchError(this.handleError)
     );
   }
+
+  public deleteJSON(url: string): Observable<any> {
+    return this.httpClient.delete(url, httpOptionsPost).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
 }
 

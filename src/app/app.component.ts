@@ -11,7 +11,7 @@ import {Service} from './service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public translate: TranslateService, public cookies: CookieService, private service: Service) {
+  constructor(public translate: TranslateService, public cookies: CookieService) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
     translate.currentLang = 'fr';
@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
   changeLanguage(lang: string): void {
     this.translate.use(lang);
     this.cookies.set('lang', lang);
-    console.log(this.cookies.get('lang'));
   }
 
   ngOnInit(): void {
     this.translate.use(this.cookies.get('lang'));
   }
+
 }
 
 export function DisplayTime(minutes: number): string {

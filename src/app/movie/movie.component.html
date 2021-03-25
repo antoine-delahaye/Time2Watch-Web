@@ -17,13 +17,18 @@
       </ngb-rating>
       <i class="bi bi-x-circle ms-3 pt-2 delete-rating"></i>
     </div>
-    <div class="mb-4 col-5">
-      <p>{{ movie.overview }}</p>
+    <div class="mb-4 col-7">
+      <p style="text-align: justify">{{ movie.overview }}</p>
     </div>
     <div class="d-flex flex-row flex-wrap">
+      <div class="d-flex flex-column justify-content-center align-items-center me-3">
+        <img class="img-fluid rounded" alt="Photo"
+             src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{ castArray[0].profile_path }}">
+        <p class="text-center">{{ castArray[0].name }}</p>
+      </div>
       <div class="d-flex flex-column justify-content-center align-items-center mx-3"
-           *ngFor="let cast of castArray.slice(0, 8)">
-        <img class="rounded-circle" alt="Photo"
+           *ngFor="let cast of castArray.slice(1, 8)">
+        <img class="img-fluid rounded" alt="Photo"
              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{ cast.profile_path }}">
         <p class="text-center">{{ cast.name }}</p>
       </div>

@@ -70,3 +70,7 @@ p {
 .sr-only {
   display: none;
 }
+
+.delete-rating:hover {
+  color: #dc143c;
+}

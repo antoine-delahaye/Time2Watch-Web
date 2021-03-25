@@ -11,11 +11,15 @@ import {Service} from './service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public translate: TranslateService, public cookies: CookieService, private service: Service) {
+  constructor(public translate: TranslateService, public cookies: CookieService) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
     translate.currentLang = 'fr';
-    cookies.set('lang', translate.currentLang);
+    if (cookies.check('lang')) {
+      translate.use(cookies.get('lang'));
+    } else {
+      cookies.set('lang', translate.currentLang);
+    }
   }
 
   title = 'Time2Watch';
@@ -24,12 +28,13 @@ export class AppComponent implements OnInit {
 
   changeLanguage(lang: string): void {
     this.translate.use(lang);
-    this.cookies.set('lang', this.translate.currentLang);
+    this.cookies.set('lang', lang);
   }
 
   ngOnInit(): void {
     this.translate.use(this.cookies.get('lang'));
   }
+
 }
 
 export function DisplayTime(minutes: number): string {

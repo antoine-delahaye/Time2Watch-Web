@@ -1,0 +1,7 @@
+main > img {
+  max-width: 25rem;
+}
+
+main section div img {
+  width: 7rem;
+}

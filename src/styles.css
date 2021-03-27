@@ -1,28 +1,76 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 /*Background colors*/
 body {
   background-color: #1b1b1b;
 }
 
-header {
+header, footer {
   background-color: #121212;
 }
 
-/*Titles styles*/
-h2 {
+/*Titles style*/
+h2, h3 {
   color: #e6af2e;
+}
+
+h4 {
+  color: #a9a9a9;
+  font-size: 1.2rem;
 }
 
 /*Buttons style*/
 .btn {
-  color: #e6af2e;
+  color: #e6af2e !important;
 }
 
 .btn:hover {
-  color: #e6af2e;
-  background-color: #1b1b1b;
+  color: #e6af2e !important;
+  background-color: #1b1b1b !important;
 }
 
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none;
+}
+
+/*Text style*/
+a {
+  text-decoration: none;
+  color: #a9a9a9;
+}
+
+a:hover {
+  color: #e6af2e;
+}
+
+p {
+  color: #a9a9a9;
+}
+
+.date {
+  font-size: 0.9rem;
+}
+
+/*Header toogle button*/
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(230, 175, 46, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/*Rating style*/
+.star {
+  font-size: 1.5rem;
+  color: #5b430b;
+}
+
+.filled {
+  color: #e6af2e;
+}
+
+.sr-only {
+  display: none;
+}
+
+.delete-rating:hover {
+  color: #dc143c;
 }

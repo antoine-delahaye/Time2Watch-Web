@@ -1,0 +1,16 @@
+main section div div:hover {
+  background-color: #121212;
+}
+
+main section div div:hover .title {
+  color: #e6af2e !important;
+}
+
+main button {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+main button:hover {
+  background-color: #121212 !important;
+}

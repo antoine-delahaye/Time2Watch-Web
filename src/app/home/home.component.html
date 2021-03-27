@@ -1,1 +1,26 @@
-<p>home works!</p>
+<main class="container-fluid d-flex flex-column justify-content-center align-items-left p-3">
+  <section class="mb-5">
+    <h2 class="mb-3">{{ "TrendingMovies" | translate }}</h2>
+    <div class="d-flex flex-row justify-content-between flex-wrap mx-auto col-12">
+      <div class="d-flex flex-column col-xl-1 col-lg-2 col-md-3 col-sm-4 m-2 px-2 pt-2 pb-1 rounded"
+           *ngFor="let movie of movies" routerLink="/movie/{{ movie.id }}">
+        <img class="img-fluid rounded" alt="Poster"
+             src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ movie.poster_path }}">
+        <p class="text-truncate mb-0 title">{{ movie.title }}</p>
+        <p class="mb-0 date">{{ movie.release_date.substring(0, 4) }}</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="mb-3">{{ "TrendingTvShows" | translate }}</h2>
+    <div class="d-flex flex-row justify-content-between flex-wrap mx-auto col-12">
+      <div class="d-flex flex-column col-xl-1 col-lg-2 col-md-3 col-sm-4 m-2 px-2 pt-2 pb-1 rounded"
+           *ngFor="let tvshow of tvshows" routerLink="/tvshow/{{ tvshow.id }}">
+        <img class="img-fluid rounded" alt="Poster"
+             src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{ tvshow.poster_path }}">
+        <p class="text-truncate m-0 title">{{ tvshow.name }}</p>
+        <p class="mb-0 date">{{ tvshow.first_air_date.substring(0, 4) }}</p>
+      </div>
+    </div>
+  </section>
+</main>

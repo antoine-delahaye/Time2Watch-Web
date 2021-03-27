@@ -1,21 +1,35 @@
-<header class="container-fluid d-flex flex-row justify-content-between align-items-center p-3">
-  <h1>
-    <a class="rounded px-3 pt-1 pb-3" routerLink="/">
+<header class="container-fluid d-flex flex-row align-items-center">
+  <nav class="navbar navbar-dark navbar-expand-lg container-fluid">
+    <a class="navbar-brand rounded p-3 me-auto" routerLink="/">
       <img class="img-fluid" src="assets/images/logo-transparent.png" alt="Logo">
     </a>
-  </h1>
-  <nav>
-    <button class="btn m-2" routerLink="/movies">
-      Films
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <button class="btn m-2" routerLink="/tvshows">
-      Séries TV
-    </button>
-    <button class="btn m-2" routerLink="/about">
-      À propos
-    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="nav-link btn ms-auto" routerLink="/movies/1">{{ "Movies" | translate }}</button>
+        <button class="nav-link btn ms-auto" routerLink="/tvshows/1">{{ "TvShows" | translate }}</button>
+        <button class="nav-link btn ms-auto" routerLink="/about">{{ "About" | translate }}</button>
+      </div>
+    </div>
   </nav>
 </header>
-<main class="container-fluid d-flex flex-column justify-content-center align-items-center mt-auto mb-auto">
-  <router-outlet></router-outlet>
-</main>
+<router-outlet></router-outlet>
+<footer class="container-fluid d-flex flex-row justify-content-between align-items-center p-3">
+  <p class="mb-0 text-truncate">© 2021 Time2Watch - {{ "University" | translate }}</p>
+  <div class="btn-group dropup">
+    <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
+      {{ "Language" | translate }}
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-item active" (click)="changeLanguage('fr')" [class.active]="'fr' === translate.currentLang">
+        <i class="flag-icon flag-icon-fr"></i> {{ "French" | translate }}
+      </li>
+      <li class="dropdown-item" (click)="changeLanguage('en')" [class.active]="'en' === translate.currentLang">
+        <i class="flag-icon flag-icon-gb"></i> {{ "English" | translate }}
+      </li>
+    </ul>
+  </div>
+</footer>
